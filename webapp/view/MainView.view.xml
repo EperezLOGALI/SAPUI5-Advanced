@@ -19,52 +19,9 @@
                             <Button id="btnFilter" text="{i18n>btnFilter}" icon="sap-icon://search" press="onFilter" class="sapUiSmallMarginEnd"/>
                             <Button id="btnClearFilter" text="{i18n>btnClearFilter}" icon="sap-icon://clear-filter" press="onClearFilter" class="sapUiSmallMarginEnd"/>
                         </HBox>
-                        <HBox id="Box2">
-                            <Panel id="Panel1">
-                                <Button id ="btnShowCity" text="{i18n>showCity}" visible="{jsonConfig>/vBtnShowCity}" press="onShowCity"/>
-                                <Button id ="btnHideCity" text="{i18n>hideCity}" visible="{jsonConfig>/vBtnHideCity}" press="onHideCity"/>
 
-                                <Table id="tableEmployee" items="{jsonEmployees>/}">
-                                    <columns>
-                                        <Column id="Col1" visible="{jsonConfig>/visibleID}">
-                                            <header>
-                                                <Label text="{i18n>tableId}"/>
-                                            </header>
-                                        </Column>
-                                        <Column id="Col2" visible="{jsonConfig>/visibleName}">
-                                            <header>
-                                                <Label text="{i18n>tableName}"/>
-                                            </header>
-                                        </Column>
-                                        <Column id="Col3" visible="{jsonConfig>/visibleCountry}">
-                                            <header>
-                                                <Label text="{i18n>tableCountry}"/>
-                                            </header>
-                                        </Column>
-                                        <Column id="Col4" visible="{jsonConfig>/visibleCity}">
-                                            <header>
-                                                <Label text="{i18n>tableCity}"/>
-                                            </header>
-                                        </Column>
-                                    </columns>
-
-                                    <items>
-                                        <ColumnListItem type="Active" press="showOrders">
-                                            <cells>
-                                                <Label text="{jsonEmployees>EmployeeID}"/>
-                                                <Label text="{jsonEmployees>LastName}, {jsonEmployees>FirstName}"/>
-                                                <Label text="{jsonEmployees>Country}"/>
-                                                <Label text="{jsonEmployees>City}"/>
-                                            </cells>
-                                        </ColumnListItem>
-                                    </items>
-                                </Table>
-
-                                <HBox id="ordersTable">
-
-                                </HBox>
-                            </Panel>
-                        </HBox>
+                        <core:Fragment fragmentName="logaligroup.employee.fragment.TableEmployee" type="XML"/>
+                       
                     </content>
                 </Page>
             </pages>
