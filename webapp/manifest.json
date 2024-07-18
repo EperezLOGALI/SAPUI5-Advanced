@@ -44,7 +44,7 @@
     }
   },
   "sap.ui5": {
-    "flexEnabled": true,
+    "flexEnabled": false,
     "dependencies": {
       "minUI5Version": "1.125.1",
       "libs": {
@@ -94,28 +94,35 @@
       },
       "routes": [
         {
-          "name": "RouteMainView",
+          "name": "RouteMain",
           "pattern": ":?query:",
           "target": [
-            "TargetMainView"
+            "TargetMain"
           ]
         }
       ],
       "targets": {
-        "TargetMainView": {
+        "TargetMain": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "MainView",
-          "viewName": "MainView"
+          "viewId": "Main",
+          "viewName": "Main"
+        },
+        "TargetMasterEmployee": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "MasterEmployee",
+          "viewName": "MasterEmployee"
         }
       }
     },
     "rootView": {
-      "viewName": "logaligroup.employee.view.App",
+      "viewName": "logaligroup.employee.view.Main",
       "type": "XML",
       "async": true,
-      "id": "App"
+      "id": "Main"
     }
   }
 }

@@ -13,30 +13,7 @@ sap.ui.define([
         "use strict";
 
         function onInit() {
-
-
-            var oView = this.getView();
-            //var i18nBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle(); //logaligroup.employee.i18n.i18n
-
-            var oJSONModelEmpl = new sap.ui.model.json.JSONModel();
-            oJSONModelEmpl.loadData("./localService/mockdata/Employees.json", false);
-            oView.setModel(oJSONModelEmpl, "jsonEmployees");
-
-            var oJSONModelCountries = new sap.ui.model.json.JSONModel();
-            oJSONModelCountries.loadData("./localService/mockdata/Countries.json", false);
-            oView.setModel(oJSONModelCountries, "jsonCountries");
-
-            var oJSONModelConfig = new sap.ui.model.json.JSONModel({
-                visibleID: true,
-                visibleName: true,
-                visibleCountry: true,
-                visibleCity: false,
-                vBtnShowCity: true,
-                vBtnHideCity: false,
-            });
-
-            oView.setModel(oJSONModelConfig, "jsonConfig");
-
+            this._bus = sap.ui.getCore().getEventBus();
         }
 
         function onFilter() {
@@ -113,7 +90,13 @@ sap.ui.define([
             this._oDialogOrders.close();
         };
 
-        var Main = Controller.extend("logaligroup.employee.controller.MainView", {});
+        function showEmployee(oEvent) {
+
+            var path = oEvent.getSource().getBindingContext("jsonEmployees").getPath();
+            this._bus.publish("flexible", "showEmployee", path);
+        };
+
+        var Main = Controller.extend("logaligroup.employee.controller.MasterEmployee", {});
 
         //        return Controller.extend("logaligroup.employee.controller.MainView", {
 
@@ -140,5 +123,6 @@ sap.ui.define([
         Main.prototype.onHideCity = onHideCity;
         Main.prototype.showOrders = showOrders;
         Main.prototype.onCloseOrders = onCloseOrders;
+        Main.prototype.showEmployee = showEmployee;
         return Main;
     });
