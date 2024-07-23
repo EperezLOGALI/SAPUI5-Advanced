@@ -29,7 +29,10 @@ sap.ui.define([
 
                 // set the device model
                 this.setModel(models.createDeviceModel(), "device");
-            }
+            },
+
+            SapId: "eperez@plastic7a.com"
+            //SapId: "1944_1981@logaligroup.com"
         });
     }
 );
