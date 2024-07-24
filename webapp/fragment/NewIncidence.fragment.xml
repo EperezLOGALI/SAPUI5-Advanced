@@ -9,7 +9,7 @@
                 <Title text="{i18n>incidence} {= ${incidenceModel>IncidenceId} ? parseInt(${incidenceModel>IncidenceId}) : ''}
                                             {path: 'incidenceModel>CreationDate', formatter:'.Formatter.dateFormat' } "></Title>
                 <ToolbarSpacer ></ToolbarSpacer>
-                <Button icon="sap-icon://save" press="onSaveIncidence"/>                      
+                <Button icon="sap-icon://save" press="onSaveIncidence" enabled="{= ${incidenceModel>EnabledSave} === true}"/>                      
                 <core:Icon src="sap-icon://delete" press="onDeleteIncidence"/>
             </Toolbar>
         </headerToolbar>
@@ -17,12 +17,12 @@
             <HBox >
                 <VBox class="sapUiSmallMarginEnd">
                     <Label text="{i18n>incidenceDate}" required="true"/>
-                    <DatePicker dateValue="{incidenceModel>CreationDate}" valueState="Error" change="updateIncidenceCreationDate"></DatePicker>
+                    <DatePicker dateValue="{incidenceModel>CreationDate}" valueState="{incidenceModel>CreationDateState}" change="updateIncidenceCreationDate"></DatePicker>
                 </VBox>
 
                 <VBox visible="{= ${incidenceModel>CreationDate} !== '' &amp;&amp; ${incidenceModel>CreationDate} !== undefined}" class="sapUiSmallMarginEnd">
                     <Label text="{i18n>incidenceReason}" required="true"/>
-                    <Input value="{incidenceModel>Reason}" change="updateIncidenceReason"></Input>
+                    <Input value="{incidenceModel>Reason}" change="updateIncidenceReason" valueState="{incidenceModel>ReasonState}"></Input>
                 </VBox>
 
                 <VBox visible="{= ${incidenceModel>CreationDate} !== '' &amp;&amp; ${incidenceModel>CreationDate} !== undefined}" class="sapUiSmallMarginEnd">
