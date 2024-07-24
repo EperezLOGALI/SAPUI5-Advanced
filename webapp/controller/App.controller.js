@@ -2,10 +2,10 @@ sap.ui.define(
     [
         "sap/ui/core/mvc/Controller"
     ],
-    function(BaseController) {
+    function(Controller) {
       "use strict";
   
-      return BaseController.extend("logaligroup.employee.controller.App", {
+      return Controller.extend("logaligroup.employee.controller.App", {
         onInit: function() {
         }
       });
