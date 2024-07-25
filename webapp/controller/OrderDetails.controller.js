@@ -33,6 +33,11 @@ sap.ui.define(
                 oRouter.navTo("RouteMain", true);
                 window.history.go(-1);
             }
+        },
+
+        onClearSignature: function(oEvent) {
+          var signature = this.byId("signature");
+          signature.clear();
         }
       });
     }
